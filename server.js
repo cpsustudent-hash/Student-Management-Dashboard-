@@ -6,12 +6,16 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Read JSON sent by the browser and serve the dashboard files.
-app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
-
-// Show the dashboard homepage when visitors open the main URL.
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.sendFile(path.join(__dirname, "index.html"));
+});
+
+app.get("/style.css", (req, res) => {
+  res.sendFile(path.join(__dirname, "style.css"));
+});
+
+app.get("/app.js", (req, res) => {
+  res.sendFile(path.join(__dirname, "app.js"));
 });
 
 function validateStudent(data) {

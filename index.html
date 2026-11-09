@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Management Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-icon">S</span><span>StudyBoard</span></div>
+    <p class="side-label">MENU</p>
+    <a class="nav-link active" href="#dashboard">▦ <span>Dashboard</span></a>
+    <a class="nav-link" href="#students">♙ <span>Students</span></a>
+    <div class="sidebar-bottom">
+      <div class="profile-mark">A</div>
+      <div><strong>Administrator</strong><small>System account</small></div>
+    </div>
+  </aside>
+
+  <main class="main-content" id="dashboard">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">OVERVIEW</p>
+        <h1>Dashboard</h1>
+        <p class="subtitle">Manage your student records in one place.</p>
+      </div>
+      <div class="today" id="today"></div>
+    </header>
+
+    <section class="stats-grid">
+      <article class="stat-card">
+        <div class="stat-icon blue">♙</div>
+        <p>Total Students</p><h2 id="totalStudents">0</h2><small>Registered students</small>
+      </article>
+      <article class="stat-card">
+        <div class="stat-icon purple">▤</div>
+        <p>Courses</p><h2 id="totalCourses">0</h2><small>Different courses</small>
+      </article>
+      <article class="stat-card">
+        <div class="stat-icon green">1</div>
+        <p>First Year</p><h2 id="firstYear">0</h2><small>First-year students</small>
+      </article>
+      <article class="stat-card">
+        <div class="stat-icon orange">4</div>
+        <p>Fourth Year</p><h2 id="fourthYear">0</h2><small>Fourth-year students</small>
+      </article>
+    </section>
+
+    <section class="panel" id="students">
+      <div class="panel-heading">
+        <div><h2>Student Records</h2><p>View, add, edit, and delete student information.</p></div>
+        <button class="primary-btn" id="addBtn">＋ Add Student</button>
+      </div>
+      <div class="toolbar">
+        <input id="searchInput" type="search" placeholder="Search name, course, or email...">
+        <span id="recordCount">0 records</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>STUDENT</th><th>COURSE</th><th>YEAR LEVEL</th><th>EMAIL</th><th>ACTION</th></tr></thead>
+          <tbody id="studentRows">
+            <tr><td colspan="5" class="empty">Loading student records...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <footer>StudyBoard · Student Management System</footer>
+  </main>
+
+  <div class="modal-backdrop" id="modalBackdrop">
+    <section class="modal">
+      <div class="modal-heading">
+        <div><p class="eyebrow">STUDENT INFORMATION</p><h2 id="modalTitle">Add Student</h2></div>
+        <button class="close-btn" id="closeBtn" aria-label="Close">×</button>
+      </div>
+      <form id="studentForm">
+        <label>Full Name<input id="name" required maxlength="100" placeholder="Enter full name"></label>
+        <label>Course<input id="course" required maxlength="100" placeholder="Example: BS Information Technology"></label>
+        <label>Year Level
+          <select id="year_level" required>
+            <option value="">Select year level</option>
+            <option>1st Year</option><option>2nd Year</option>
+            <option>3rd Year</option><option>4th Year</option>
+          </select>
+        </label>
+        <label>Email Address<input id="email" type="email" required maxlength="150" placeholder="student@example.com"></label>
+        <p class="form-message" id="formMessage"></p>
+        <div class="form-actions">
+          <button type="button" class="secondary-btn" id="cancelBtn">Cancel</button>
+          <button type="submit" class="primary-btn" id="saveBtn">Save Student</button>
+        </div>
+      </form>
+    </section>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -9,6 +9,11 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
+// Show the dashboard homepage when visitors open the main URL.
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
 function validateStudent(data) {
   const name = String(data.name || "").trim();
   const course = String(data.course || "").trim();
